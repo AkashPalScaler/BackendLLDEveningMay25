@@ -4,9 +4,9 @@ public class User {
     private String id;
     public String name;
 
-//    public User(){
-//        System.out.println("User default constructor called");
-//    }
+    public User(){
+        System.out.println("User default constructor called");
+    }
 
     public User(String id, String name){
         this.id = id;
@@ -26,5 +26,9 @@ public class User {
         if (id != null) {
             this.id = id;
         }
+    }
+
+    static void doSome(){
+        System.out.println("User do something");
     }
 }

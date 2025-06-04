@@ -17,4 +17,8 @@ public class Student extends User{
         this.batch= "kshdb";
         this.getId();
     }
+
+    static void doSome(){
+        System.out.println("Student do something");
+    }
 }

@@ -12,8 +12,9 @@ public class Client {
         Printer2 pthread = new Printer2();
         pthread.start();
 
-        for(int i=0;i<100;i++){
+        for(int i=0;i<1000000;i++){
             Runnable task = new PrintAGivenNumber(i);
+
             Thread t1 = new Thread(task);
             t1.start();
         }

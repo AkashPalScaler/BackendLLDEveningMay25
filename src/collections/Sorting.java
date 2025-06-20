@@ -38,6 +38,15 @@ public class Sorting {
             System.out.println(s.name +" | age:" + s.age + " | marks:" + s.marks);
         }
 
+
+        students.stream()
+        .filter((student) -> {
+            return student.age >= 30;
+        }) 
+        .forEach((student) -> {
+            System.out.println(student.name);
+        });
+
     }
     
 }

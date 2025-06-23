@@ -3,6 +3,7 @@ package MultiThreadedMergeSort;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
@@ -48,7 +49,7 @@ public class Sorter implements Callable<List<Integer>> {
 
 
     @Override
-    public List<Integer> call() throws Exception {
+    public List<Integer> call() throws InterruptedException, ExecutionException {
         //base case
         if(arrayToSort.size() == 1){
             System.out.println("DEBUG");

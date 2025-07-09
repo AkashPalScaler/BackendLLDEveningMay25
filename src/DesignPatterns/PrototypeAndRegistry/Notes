@@ -1,0 +1,81 @@
+Real life Analogy:
+Class MAte NOtebooks
+-Cover
+-backCover
+-thickness-GSM
+-type (ruled/unruled)
+-noOfPages
+-Price
+-size
+-Spiral Binded/Unbinded
+
+NOT example of Prototype use(but has a use case, we'll see later):
+Class MAte NOtebooks
+-Cover
+-backCover
+-Object ClassMateBaseNotebook
+
+ClassMateBaseNotebook
+-thickness-GSM
+-type (ruled/unruled)
+-noOfPages
+-Price
+-size
+-Spiral Binded/Unbinded
+
+Real life usecase:
+1.SearchApi - ElastiCache-
+
+SearchAPI sapi = new SearchAPI();
+sapi.url = URL;
+sapi.token = TOKEN;
+sapi.query = <query>;
+
+SearchAPI sapi = PrototypeSearchAPI.copy();
+sapi.url = URL;
+sapi.token = TOKEN;
+sapi.query = <query>;
+
+2. Animal-Plant-zombie game-
+
+Have different enemies - Animal-Plant-zombie
+Enemy Class-
+-Vector
+-Skill
+-killFactor
+-etc
+
+
+AnimalPrototype Object
+PlantPrototypeObject
+ZombiePrototype
+
+class Game{
+  AnimalPrototype animalProtObj; //Dependency
+  Plant plantPrototypeObj;
+  //Many prototype dependencies
+  function(Animal animalObj){
+    // make a copy of animal object - I need a prototype animal object
+      animalObj.copy();
+      //make a copy of plant, zombie, also 10 other things
+    
+  }
+}
+
+Registry Used:
+Map<String, Object> protoTypeRegistry;
+
+protoTypeRegistry.set("Animal", AnimalObject)
+protoTypeRegistry.set("Plant", plantObject);
+protoTypeRegistry.set("Zombie", ZombieObject);
+
+
+class Game{
+  PrototypeRegistry registry;
+  function(Animal animalObj){
+    // make a copy of animal object - I need a prototype animal object
+      Animal animal = registry.get("Animal").copy();
+      
+    
+  }
+}

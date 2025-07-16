@@ -6,8 +6,9 @@ public class Client {
     public static void main(String[] args) {
         //Version 1
         // StudentBuilder studentBuilder = new StudentBuilder();
+         // studentBuilder.setAge(23);
         // studentBuilder.setName("Akash");
-        // studentBuilder.setAge(23);
+       
         // studentBuilder.setBatch("Morning25");
         // studentBuilder.setPSP(1.5f);
 
@@ -44,8 +45,7 @@ public class Client {
                                 .setPSP(1.5f)
                                 .build();
 
-        Student st = new Student(null);
-
+        //Student st = new Student();
         
 
  

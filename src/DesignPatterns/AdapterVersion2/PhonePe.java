@@ -3,10 +3,18 @@ package DesignPatterns.AdapterVersion2;
 import DesignPatterns.AdapterVersion1.BankAPIInterface;
 
 public class PhonePe {
-    BankAPIInterface bankAPI = new ICICIBankAPIAdapter();
+    BankAPIInterface bankAPI;
     Loan loan = new Loan();
     FastCard fastCard = new FastCard();
     String userUPI= "aksh@ybl";
+
+    public PhonePe(BankAPIInterface bankAPI){
+        this.bankAPI = bankAPI;
+    }
+
+    public void setBankAPI(BankAPIInterface bankAPI){
+        this.bankAPI = bankAPI;
+    }
     
     void checkLoanEligibility(){
         if(loan.checkLoanEligibility(bankAPI)){

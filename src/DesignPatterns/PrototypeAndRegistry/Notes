@@ -54,7 +54,7 @@ class Game{
   AnimalPrototype animalProtObj; //Dependency
   Plant plantPrototypeObj;
   //Many prototype dependencies
-  function(Animal animalObj){
+  function battle(Animal animalObj){
     // make a copy of animal object - I need a prototype animal object
       animalObj.copy();
       //make a copy of plant, zombie, also 10 other things
@@ -72,7 +72,7 @@ protoTypeRegistry.set("Zombie", ZombieObject);
 
 class Game{
   PrototypeRegistry registry;
-  function(Animal animalObj){
+  function battle(Animal animalObj){
     // make a copy of animal object - I need a prototype animal object
       Animal animal = registry.get("Animal").copy();
       

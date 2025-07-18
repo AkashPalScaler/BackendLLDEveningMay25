@@ -2,6 +2,7 @@ package DesignPatterns.Decorator;
 
 public class Milk extends Addon{
     Beverage base;
+    int MilkCount;
     //AddOns should always have a base beverage
     public Milk(Beverage base){
         if(base == null){

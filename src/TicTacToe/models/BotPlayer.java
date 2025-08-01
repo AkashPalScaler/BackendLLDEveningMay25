@@ -8,7 +8,8 @@ public class BotPlayer extends Player{
     }
 
     @Override
-    Move makeMove() {
+    Move makeMove(Board board) {
+        System.out.println("Botty is not playing right now");
         return null;
     }
 }

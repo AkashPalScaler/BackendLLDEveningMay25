@@ -1,5 +1,7 @@
 package TicTacToe.models;
 
+import TicTacToe.validations.gamevalidations.UniqueSymbolValidation;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,9 +25,13 @@ public class Game {
 
     public void makeMove(){
         // Fetch player to make the move
+        Player currPLayer = players.get(nextPlayerIndex);
+        nextPlayerIndex = (nextPlayerIndex + 1) % players.size(); // Turning the player
         // Get the move by calling player.makeMove
-        // change next player
+        Move move = currPLayer.makeMove(board);
         // Update the board
+        board.getGrid().get(move.getCell().getRow()).get(move.getCell().getCol()).setCellState(CellState.FILLED);
+        board.getGrid().get(move.getCell().getRow()).get(move.getCell().getCol()).setSymbol(currPLayer.getSymbol());
         // Store the move in moveHistory
         // check winner and update game state
     }
@@ -111,8 +117,16 @@ public class Game {
             return this;
         }
 
+        void validations(){
+            UniqueSymbolValidation.validate(players);
+
+        }
+
         public Game build(){
             //Validations
+            // If player symbols are unique
+            // 2 players min and only one bot player allowed
+            // Homework: create all the validation classes
             return new Game(this);
         }
     }

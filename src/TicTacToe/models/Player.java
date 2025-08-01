@@ -4,7 +4,7 @@ public abstract class Player {
     private String name;
     private PlayerType playerType;
     private Symbol symbol;
-    abstract Move makeMove();
+    abstract Move makeMove(Board board);
 
     public Player(String name, PlayerType playerType, Symbol symbol) {
         this.name = name;

@@ -24,12 +24,11 @@ public class Client {
 
         Game game1 = gameController.startGame(3, players, winningStrategyTypes);
 //        Game game2 = gameController.startGame();
-        gameController.displayBoard(game1);
-//        while(gameController.checkGameState(game1).equals(GameState.IN_PROGRESS)){
-//            gameController.displayBoard(game1);
-//            gameController.makeMove(game1);
-//
-//        }
+//        gameController.displayBoard(game1);
+        while(gameController.checkGameState(game1).equals(GameState.IN_PROGRESS)){
+            gameController.displayBoard(game1);
+            gameController.makeMove(game1);
+        }
 
         if(gameController.checkGameState(game1).equals(GameState.DRAW)){
             System.out.println("The game is a draw");
@@ -38,3 +37,9 @@ public class Client {
         }
     }
 }
+
+
+//Home work:
+//Add all validations and exception classes required
+//Convert the unique symbal validation code to one line using streams
+//Add Bot's make move function - For EASY and MEDIUM

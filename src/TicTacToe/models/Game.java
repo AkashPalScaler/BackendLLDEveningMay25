@@ -34,6 +34,7 @@ public class Game {
         board.getGrid().get(move.getCell().getRow()).get(move.getCell().getCol()).setSymbol(currPLayer.getSymbol());
         // Store the move in moveHistory
         // check winner and update game state
+
     }
 
     public Board getBoard() {

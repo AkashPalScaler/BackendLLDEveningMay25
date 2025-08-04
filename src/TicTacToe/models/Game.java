@@ -1,5 +1,7 @@
 package TicTacToe.models;
 
+import TicTacToe.strategies.WinningStrategies.WinningStrategy;
+import TicTacToe.strategies.WinningStrategies.WinningStrategyFactory;
 import TicTacToe.validations.gamevalidations.UniqueSymbolValidation;
 
 import java.util.ArrayList;
@@ -13,14 +15,28 @@ public class Game {
     private int nextPlayerIndex; // 0 -> 1 % playerListSize=0 -> 2 % playerListSize=0
     private List<Move> moveHistory;
     private List<WinningStrategyType> winningStrategyTypes;
+    private List<WinningStrategy> winningStrategies;
 
     public Game(Builder builder) {
         this.board = new Board(builder.size);
         this.players = builder.players;
         this.winningStrategyTypes = builder.winningStrategyTypes;
+        this.winningStrategies = new ArrayList<>();
+        winningStrategyTypes.forEach( type -> {
+            winningStrategies.add(WinningStrategyFactory.getStrategy(type));
+        });
         nextPlayerIndex = 0;
         gameState = GameState.IN_PROGRESS;
         moveHistory = new ArrayList<>();
+    }
+
+    public boolean checkWinner(Move move){
+        for(WinningStrategy strategy : winningStrategies){
+            if(strategy.checkWinner(board, move)){
+                return true;
+            }
+        }
+        return false;
     }
 
     public void makeMove(){
@@ -32,8 +48,17 @@ public class Game {
         // Update the board
         board.getGrid().get(move.getCell().getRow()).get(move.getCell().getCol()).setCellState(CellState.FILLED);
         board.getGrid().get(move.getCell().getRow()).get(move.getCell().getCol()).setSymbol(currPLayer.getSymbol());
-        // Store the move in moveHistory
+        // Store the move in moveHistory - undo
+        moveHistory.add(move);
+
         // check winner and update game state
+        if(checkWinner(move)){
+            setWinner(currPLayer);
+            setGameState(GameState.SUCCESS);
+        }else if(moveHistory.size() == board.getSize() * board.getSize()){
+            setWinner(null);
+            setGameState(GameState.DRAW);
+        }
 
     }
 

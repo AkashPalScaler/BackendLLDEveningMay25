@@ -8,16 +8,9 @@ import java.util.List;
 import java.util.Set;
 
 public class UniqueSymbolValidation {
-    public static void validate(List<Player> players){
-        Set<Character> symbolSet = new HashSet<>();
-        for(Player player : players){
-            if(symbolSet.contains(player.getSymbol().getSym())){
-                throw new UniqueSymbolException("Duplicate symbol");
-            }else{
-                symbolSet.add(player.getSymbol().getSym());
-            }
+    public static void validate(List<Player> players) {
+        if (players.stream().map(Player::getSymbol).distinct().count() != players.size()) {
+            throw new UniqueSymbolException("Duplicate symbol");
         }
-
-        // Homework -> Do this in one line using streams
     }
 }

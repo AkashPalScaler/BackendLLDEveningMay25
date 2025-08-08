@@ -4,11 +4,11 @@ import TicTacToe.models.WinningStrategyType;
 
 public class WinningStrategyFactory {
     public static WinningStrategy getStrategy(WinningStrategyType type){
-        if(type.equals(WinningStrategyType.ROW)){
-            return new RowWinningStrategy();
-        }else if(type.equals(WinningStrategyType.COL)){
-            return new ColumnWinningStrategy();
-        }
-        throw new RuntimeException("Invalid winning strategy");
+        return switch (type) {
+            case ROW -> new RowWinningStrategy();
+            case COL -> new ColumnWinningStrategy();
+            case DIAGONAL -> new DiagonalWinningStrategy();
+            case ANTI_DIAGONAL -> new AntiDiagonalWinningStrategy();
+        };
     }
 }

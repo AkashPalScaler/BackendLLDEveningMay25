@@ -39,6 +39,30 @@ public class Game {
         return false;
     }
 
+    public void undo(){
+        // We need to revert all the steps done to make a move
+        // Check if any move is there to undo
+        if(moveHistory.isEmpty()){
+            throw new RuntimeException("No moves to undo!");
+        }
+        // roll back the nextPlayerIndex
+        nextPlayerIndex = (nextPlayerIndex -1 + players.size()) % players.size(); // (A - B) % N -> (A -B +N)%N
+        // Get and remove move from history
+        Move move = moveHistory.removeLast();
+        // Revert the move from the board - update the cells
+        board.getGrid().get(move.getCell().getRow()).get(move.getCell().getCol()).setCellState(CellState.EMPTY);
+        board.getGrid().get(move.getCell().getRow()).get(move.getCell().getCol()).setSymbol(null);
+
+        // Revert the strategy count map
+        for(WinningStrategy strategy : winningStrategies) {
+            strategy.handleUndo(move);
+        }
+        // Set the winner to null
+        setWinner(null);
+        // Set the gameState to IN_PROGRESS
+        setGameState(GameState.IN_PROGRESS);
+    }
+
     public void makeMove(){
         // Fetch player to make the move
         Player currPLayer = players.get(nextPlayerIndex);

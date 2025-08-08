@@ -27,4 +27,12 @@ public class ColumnWinningStrategy implements WinningStrategy{
         }
         return false;
     }
+
+    @Override
+    public void handleUndo(Move move) {
+        int col = move.getCell().getCol();
+        Character symbol = move.getPlayer().getSymbol().getSym();
+        HashMap<Character, Integer> countMap = colMap.get(col);
+        countMap.put(symbol, countMap.get(symbol)-1);
+    }
 }

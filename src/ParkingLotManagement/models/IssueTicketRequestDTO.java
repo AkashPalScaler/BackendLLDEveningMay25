@@ -5,7 +5,8 @@ public class IssueTicketRequestDTO {
     String owner_name;
     String owner_number;
     VehicleType vehicle_type;
-    String gate_id;
+    Long gate_id;
+//    Long parkingLot_id;
 
     public String getReg_number() {
         return reg_number;
@@ -39,11 +40,11 @@ public class IssueTicketRequestDTO {
         this.vehicle_type = vehicle_type;
     }
 
-    public String getGate_id() {
+    public Long getGate_id() {
         return gate_id;
     }
 
-    public void setGate_id(String gate_id) {
+    public void setGate_id(Long gate_id) {
         this.gate_id = gate_id;
     }
 }

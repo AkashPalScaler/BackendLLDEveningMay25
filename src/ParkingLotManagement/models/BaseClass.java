@@ -3,15 +3,15 @@ package ParkingLotManagement.models;
 import java.util.Date;
 
 public class BaseClass {
-    long id;
+    Long id;
     Date created_at;
     Date updated_at;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

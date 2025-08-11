@@ -1,5 +1,5 @@
 package ParkingLotManagement.models;
 
-public enum FloorStatus {
+public enum ParkingFloorStatus {
     EMPTY, FILLED, UN_OPERATIONAL, CLOSED, OPEN
 }

@@ -6,7 +6,12 @@ public class ParkingSlot {
     String number;
     ParkingSlotStatus status;
     List<AllowedVehicle> allowedVehicles;
-    ParkingFloor floor;
+
+    public ParkingSlot(String number, ParkingSlotStatus status, List<AllowedVehicle> allowedVehicles) {
+        this.number = number;
+        this.status = status;
+        this.allowedVehicles = allowedVehicles;
+    }
 
     public String getNumber() {
         return number;
@@ -32,11 +37,4 @@ public class ParkingSlot {
         this.allowedVehicles = allowedVehicles;
     }
 
-    public ParkingFloor getFloor() {
-        return floor;
-    }
-
-    public void setFloor(ParkingFloor floor) {
-        this.floor = floor;
-    }
 }

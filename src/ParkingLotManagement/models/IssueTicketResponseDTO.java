@@ -7,6 +7,29 @@ public class IssueTicketResponseDTO {
     Date entry_time;
     String slot_number;
 
+    String responseMessage;
+    ResponseStatus status;
+
+
+    public IssueTicketResponseDTO() {
+    }
+
+    public ResponseStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(ResponseStatus status) {
+        this.status = status;
+    }
+
+    public String getResponseMessage() {
+        return responseMessage;
+    }
+
+    public void setResponseMessage(String responseMessage) {
+        this.responseMessage = responseMessage;
+    }
+
     public IssueTicketResponseDTO(String ticket_number, Date entry_time, String slot_number) {
         this.ticket_number = ticket_number;
         this.entry_time = entry_time;

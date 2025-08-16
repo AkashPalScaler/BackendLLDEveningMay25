@@ -14,7 +14,22 @@ public class Client {
         GameController gameController = new GameController();
 
         Player akash = new HumanPlayer("Akash", PlayerType.HUMAN, 'X');
-        Player botty = new BotPlayer("Botty", PlayerType.BOT, 'O', BotDifficultyLevel.EASY);
+        BotDifficultyLevel botDifficultyLevel;
+        do {
+            System.out.println("Choose 1 for Easy Bot, 2 for Medium Bot: ");
+            String difficulty = new Scanner(System.in).nextLine();
+            if (difficulty.equals("1")) {
+                botDifficultyLevel = BotDifficultyLevel.EASY;
+                break;
+            } else if (difficulty.equals("2")) {
+                botDifficultyLevel = BotDifficultyLevel.MEDIUM;
+                break;
+            } else {
+                System.out.println("Invalid choice, please try again.");
+            }
+        } while (true);
+
+        Player botty = new BotPlayer("Botty", PlayerType.BOT, 'O', botDifficultyLevel);
 
         List<Player> players = new ArrayList<>();
         players.add(akash);
@@ -23,6 +38,8 @@ public class Client {
         List<WinningStrategyType> winningStrategyTypes = new ArrayList<>();
         winningStrategyTypes.add(WinningStrategyType.COL);
         winningStrategyTypes.add(WinningStrategyType.ROW);
+        winningStrategyTypes.add(WinningStrategyType.DIAGONAL);
+        winningStrategyTypes.add(WinningStrategyType.ANTI_DIAGONAL);
 
 
         Game game1 = gameController.startGame(3, players, winningStrategyTypes);

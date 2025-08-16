@@ -1,5 +1,5 @@
 package TicTacToe.models;
 
 public enum WinningStrategyType {
-    ROW, COL, DIAGONAL, CORNER
+    ROW, COL, DIAGONAL, ANTI_DIAGONAL
 }
